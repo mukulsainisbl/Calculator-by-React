@@ -20,13 +20,23 @@ const Calculator = () => {
   };
 
   const calculation = () => {
-    try {
-      // eslint-disable-next-line no-eval
-      setData(eval(data).toString());
-    } catch {
-      setData("Error");
+  try {
+    // Remove trailing operators or dots
+    let expression = data;
+
+    // Remove all invalid trailing characters (e.g. "+", "-", "*", "/", ".", etc.)
+    while (/[+\-*/.%()]$/.test(expression)) {
+      expression = expression.slice(0, -1);
     }
-  };
+
+    // eslint-disable-next-line no-eval
+    const result = eval(expression);
+    setData(result.toString());
+  } catch {
+    setData("0");
+  }
+};
+
 
   const deleteValue = () => {
     setData((prev) => prev.slice(0, -1));
