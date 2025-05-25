@@ -126,7 +126,7 @@ const Calculator = () => {
             value="*"
             className="bg-yellow-300 py-3 rounded-lg"
           >
-            *
+            x
           </button>
 
           <button
